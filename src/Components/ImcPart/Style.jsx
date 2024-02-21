@@ -38,6 +38,47 @@ const ImcPartStyle = styled.div`
     }
   }
 
+  .ImcCalculator__ResultPart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    gap: 15px;
+    &--Scale {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    &--Circle {
+      width: 200px;
+      height: 100px;
+      background: conic-gradient(from 180deg at 50% 100%, #7FFF00, #228B22, #FFFF00, #FF0000, #FF0000);
+        border-top-left-radius: 100px;
+        border-top-right-radius: 100px;
+        border: 2px solid ${colors.secondary};
+    }
+    &--Arrow {
+      position: absolute;
+      bottom: auto;
+      width: auto;
+      height: 0px;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 100px solid ${colors.black};
+    }
+    &--Imc {
+      font-weight: bold;
+    }
+    &--Comment {
+      text-align: center;
+      font-size: small;
+    }
+  }
+}
+
 /* Version tablette */
 @media only screen and (max-width: 992px) {
   width: 80%;
