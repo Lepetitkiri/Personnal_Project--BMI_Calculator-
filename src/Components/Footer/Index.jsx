@@ -4,8 +4,9 @@ import FooterStyle from "./Style.jsx";
 function Footer() {
   return (
     <FooterStyle>
-      <p> © </p>
-    </FooterStyle>
+      <p> Domitille REGNAULT © <br />
+        2024</p>
+    </FooterStyle >
   );
 }
 
