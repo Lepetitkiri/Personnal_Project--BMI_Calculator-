@@ -1,0 +1,20 @@
+{
+  "short_name": "Votre IMC",
+  "name": "Calculateur d'IMC",
+  "icons": [
+    {
+      "src": "../Ressources/Icons/Favicon.ico",
+      "sizes": "64x64 32x32 24x24 16x16",
+      "type": "image/x-icon"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#8FB43A",
+  "background_color": "#C8D6A2",
+  "scope": "/",
+  "orientation": "portrait",
+  "description": "Calculateur d'IMC",
+  "lang": "fr-FR",
+  "dir": "ltr"
+}
