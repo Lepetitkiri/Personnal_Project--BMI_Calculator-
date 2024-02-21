@@ -2,7 +2,7 @@ import React from "react";
 
 // Components
 import Header from '../../Components/Header/Index';
-import WorkInProgress from '../../Components/WorkInProgress/Index';
+import ImcPart from '../../Components/ImcPart/Index';
 import Footer from '../../Components/Footer/Index';
 
 // Provider
@@ -13,8 +13,7 @@ function Home() {
         <>
             <Header />
             <main>
-                <WorkInProgress />
-                <p>Page Home</p>
+                <ImcPart></ImcPart>
             </main>
             <Footer />
         </>
