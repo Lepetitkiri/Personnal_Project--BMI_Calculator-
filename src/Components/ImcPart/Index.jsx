@@ -31,6 +31,15 @@ function ImcPart() {
         </div>
         <div id="Message"></div>
       </form>
+
+      <div className='ImcCalculator__ResultPart'>
+        <div className="ImcCalculator__ResultPart--Scale">
+          <div className="ImcCalculator__ResultPart--Circle"></div>
+          <div className="ImcCalculator__ResultPart--Arrow" id='Arrow'></div>
+        </div>
+        <div className="ImcCalculator__ResultPart--Imc" id="Result"></div>
+        <div className="ImcCalculator__ResultPart--Comment" id="Comment">Rentrez vos données</div>
+      </div>
     </ImcPartStyle >
   );
 }
