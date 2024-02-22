@@ -42,6 +42,8 @@ function ImcPart() {
         domElement.innerText = ``;
         const [WeightForCalculation, SizeForCalculation] = dataFormatting(Weight, WeightUnit, Size, SizeUnit);
         console.log(WeightForCalculation + SizeForCalculation);
+        const Imc = imcCalculation(WeightForCalculation, SizeForCalculation);
+        console.log(Imc);
       }
     }
   };
@@ -89,6 +91,21 @@ function ImcPart() {
     }
 
     return [WeightForCalculation, SizeForCalculation];
+  }
+
+
+  /**
+ * Fonction de calcul de l'IMC
+ * @param {Number} Weight
+ * @param {Number} Size
+ * @returns {Imc}
+ */
+  const imcCalculation = (Weight, Size) => {
+
+    let ImcValue = Weight / (Math.pow(Size, 2));
+
+    Imc = ImcValue.toFixed(1)
+    return Imc;
   }
 
 
