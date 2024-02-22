@@ -10,6 +10,21 @@ function ImcPart() {
   let [SizeUnit, setSizeUnit] = useState("m");
   let [Imc, setImc] = useState(0);
 
+  /**
+  * Fonction de récupération des données du formulaire
+  */
+  const getDatas = () => {
+    setWeight(document.getElementById("Weight").value);
+    setWeightUnit(document.getElementById("WeightValue").value);
+    setSize(document.getElementById("Size").value);
+    setSizeUnit(document.getElementById("SizeValue").value);
+  }
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    getDatas();
+  };
+
   return (
     <ImcPartStyle>
       <form method="post" className="ImcCalculator__datas">
@@ -34,7 +49,7 @@ function ImcPart() {
         </div>
 
         <div className="ImcCalculator__datasLine">
-          <input type="submit" value="Calculer"></input>
+          <input type="submit" value="Calculer" onClick={handleClick}></input>
         </div>
         <div id="Message"></div>
       </form>
