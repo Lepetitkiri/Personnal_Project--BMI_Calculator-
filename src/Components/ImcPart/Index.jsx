@@ -104,6 +104,14 @@ function ImcPart() {
 
     let ImcValue = Weight / (Math.pow(Size, 2));
 
+    if (ImcValue < 18) {
+      ImcValue = 18;
+    } else {
+      if (ImcValue > 40) {
+        ImcValue = 40
+      }
+    }
+
     Imc = ImcValue.toFixed(1)
     return Imc;
   }
