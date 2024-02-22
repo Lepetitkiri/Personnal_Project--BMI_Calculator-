@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ImcPartStyle from "./Style.jsx";
 
 function ImcPart() {
+
+  /* Initialisation du state */
+  let [Weight, setWeight] = useState("");
+  let [WeightUnit, setWeightUnit] = useState("kg");
+  let [Size, setSize] = useState("");
+  let [SizeUnit, setSizeUnit] = useState("m");
+  let [Imc, setImc] = useState(0);
 
   return (
     <ImcPartStyle>
