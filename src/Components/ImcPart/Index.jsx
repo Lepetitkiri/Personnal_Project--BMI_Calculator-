@@ -40,8 +40,8 @@ function ImcPart() {
         domElement.innerText = `Veuillez remplir les cases avec des chiffres SVP`;
       } else {
         domElement.innerText = ``;
-        const [WeightForCalculation] = dataFormatting(Weight, WeightUnit);
-        console.log(WeightForCalculation);
+        const [WeightForCalculation, SizeForCalculation] = dataFormatting(Weight, WeightUnit, Size, SizeUnit);
+        console.log(WeightForCalculation + SizeForCalculation);
       }
     }
   };
@@ -56,8 +56,9 @@ function ImcPart() {
   * @returns {WeightForCalculation}
   * @returns {SizeForCalculation}
   */
-  const dataFormatting = (Weight, WeightUnit) => {
+  const dataFormatting = (Weight, WeightUnit, Size, SizeUnit) => {
     let WeightForCalculation;
+    let SizeForCalculation;
 
     switch (WeightUnit) {
       case 'kg': {
@@ -71,7 +72,23 @@ function ImcPart() {
       default: console.log('Weight unit error')
     }
 
-    return [WeightForCalculation];
+    switch (SizeUnit) {
+      case 'm': {
+        SizeForCalculation = parseFloat(Size)
+      }
+        break;
+      case 'cm': {
+        SizeForCalculation = parseFloat(Size.split(/[.,]/)[0]) / 100
+      }
+        break;
+      case 'foot': {
+        SizeForCalculation = parseFloat(Size) * 0.3048
+      }
+        break;
+      default: console.log('Size unit error')
+    }
+
+    return [WeightForCalculation, SizeForCalculation];
   }
 
 
