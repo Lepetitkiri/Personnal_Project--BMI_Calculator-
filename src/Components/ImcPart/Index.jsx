@@ -25,6 +25,8 @@ function ImcPart() {
   * Fonction de vérification de la validité du format de données renseignées dans le formulaire
   * @param {Number} Weight
   * @param {Number} Size
+  * @param {String} WeightUnit
+  * @param {String} SizeUnit
   * @param {HTMLElement} domElement 
   * @param {String} errorMessage 
   */
@@ -38,9 +40,39 @@ function ImcPart() {
         domElement.innerText = `Veuillez remplir les cases avec des chiffres SVP`;
       } else {
         domElement.innerText = ``;
+        const [WeightForCalculation] = dataFormatting(Weight, WeightUnit);
+        console.log(WeightForCalculation);
       }
     }
   };
+
+
+  /**
+  * Fonction de formatage des datas récupérées
+  * @param {String} Weight
+  * @param {String} WeightUnit
+  * @param {String} Size
+  * @param {String} SizeUnit
+  * @returns {WeightForCalculation}
+  * @returns {SizeForCalculation}
+  */
+  const dataFormatting = (Weight, WeightUnit) => {
+    let WeightForCalculation;
+
+    switch (WeightUnit) {
+      case 'kg': {
+        WeightForCalculation = parseFloat(Weight.split(/[.,]/)[0])
+        break;
+      }
+      case 'lb': {
+        WeightForCalculation = Math.floor(parseFloat(Weight) * 0.453)
+        break;
+      }
+      default: console.log('Weight unit error')
+    }
+
+    return [WeightForCalculation];
+  }
 
 
   useEffect(() => {
