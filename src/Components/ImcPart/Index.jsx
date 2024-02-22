@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ImcPartStyle from "./Style.jsx";
 
 function ImcPart() {
@@ -19,6 +19,33 @@ function ImcPart() {
     setSize(document.getElementById("Size").value);
     setSizeUnit(document.getElementById("SizeValue").value);
   }
+
+
+  /**
+  * Fonction de vérification de la validité du format de données renseignées dans le formulaire
+  * @param {Number} Weight
+  * @param {Number} Size
+  * @param {HTMLElement} domElement 
+  * @param {String} errorMessage 
+  */
+
+  const formChecking = (Weight, Size, domElement) => {
+    let mask = /^[0-9]+([,.]|[0-9]*)[0-9]+$/;
+    if (Weight === "" || Size === "") {
+      domElement.innerText = `Veuillez renseigner tous les champ`;
+    } else {
+      if (!mask.test(Weight) || !mask.test(Size)) {
+        domElement.innerText = `Veuillez remplir les cases avec des chiffres SVP`;
+      } else {
+        domElement.innerText = ``;
+      }
+    }
+  };
+
+
+  useEffect(() => {
+    formChecking(Weight, Size, document.getElementById(`Message`));
+  }, [Weight, Size, WeightUnit, SizeUnit]);
 
   const handleClick = (e) => {
     e.preventDefault();
