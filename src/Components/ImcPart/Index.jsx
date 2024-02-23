@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import ImcPartStyle from "./Style.jsx";
 
 function ImcPart() {
@@ -10,6 +10,9 @@ function ImcPart() {
   let [SizeUnit, setSizeUnit] = useState("m");
   let [Imc, setImc] = useState(0);
 
+  /* Référence pour suivre la première montée */
+  const initialMount = useRef(true);
+
   /**
   * Fonction de récupération des données du formulaire
   */
@@ -20,7 +23,6 @@ function ImcPart() {
     setSizeUnit(document.getElementById("SizeValue").value);
   }
 
-
   /**
   * Fonction de vérification de la validité du format de données renseignées dans le formulaire
   * @param {Number} Weight
@@ -29,9 +31,9 @@ function ImcPart() {
   * @param {String} SizeUnit
   * @param {HTMLElement} domElement 
   * @param {String} errorMessage 
+  * @returns {Imc}
   */
-
-  const formChecking = (Weight, Size, domElement) => {
+  const formChecking = (Weight, Size, WeightUnit, SizeUnit, domElement) => {
     let mask = /^[0-9]+([,.]|[0-9]*)[0-9]+$/;
     if (Weight === "" || Size === "") {
       domElement.innerText = `Veuillez renseigner tous les champ`;
@@ -41,13 +43,11 @@ function ImcPart() {
       } else {
         domElement.innerText = ``;
         const [WeightForCalculation, SizeForCalculation] = dataFormatting(Weight, WeightUnit, Size, SizeUnit);
-        console.log(WeightForCalculation + SizeForCalculation);
         const Imc = imcCalculation(WeightForCalculation, SizeForCalculation);
-        console.log(Imc);
+        return Imc
       }
     }
   };
-
 
   /**
   * Fonction de formatage des datas récupérées
@@ -93,7 +93,6 @@ function ImcPart() {
     return [WeightForCalculation, SizeForCalculation];
   }
 
-
   /**
  * Fonction de calcul de l'IMC
  * @param {Number} Weight
@@ -111,15 +110,23 @@ function ImcPart() {
         ImcValue = 40
       }
     }
-
     Imc = ImcValue.toFixed(1)
     return Imc;
   }
 
-
   useEffect(() => {
-    formChecking(Weight, Size, document.getElementById(`Message`));
+    if (initialMount.current == true) {
+      initialMount.current = false;
+    } else {
+      formChecking(Weight, Size, WeightUnit, SizeUnit, document.getElementById(`Message`));
+      setImc(Imc);
+      if (Imc !== 0) {
+        document.getElementById('Result').innerText = `Votre IMC est : ${Imc}`;
+        document.getElementById('Comment').innerText = `Attention, l'IMC est un outil de mesure utile, mais nous sommes des êtres complexes et votre état de santé nécessite un diagnostic complet pour être représentatif.`;
+      }
+    }
   }, [Weight, Size, WeightUnit, SizeUnit]);
+
 
   const handleClick = (e) => {
     e.preventDefault();
