@@ -114,6 +114,20 @@ function ImcPart() {
     return Imc;
   }
 
+  /**
+* Fonction de rotation de la fleche
+* @param {Number} Imc
+*/
+  function rotationAnimation(Imc) {
+    const element = document.getElementById('Arrow');
+
+    let ImcAnimationValue = Imc;
+    ImcAnimationValue = (90 / 11) * Imc - (90 + (1620 / 11));
+    element.style.transform = `rotate(${ImcAnimationValue}deg)`;
+    element.style.transformOrigin = 'bottom center';
+    element.style.transition = 'transform 2s ease-out';
+  }
+
   useEffect(() => {
     if (initialMount.current == true) {
       initialMount.current = false;
@@ -123,6 +137,7 @@ function ImcPart() {
       if (Imc !== 0) {
         document.getElementById('Result').innerText = `Votre IMC est : ${Imc}`;
         document.getElementById('Comment').innerText = `Attention, l'IMC est un outil de mesure utile, mais nous sommes des êtres complexes et votre état de santé nécessite un diagnostic complet pour être représentatif.`;
+        rotationAnimation(Imc);
       }
     }
   }, [Weight, Size, WeightUnit, SizeUnit]);
