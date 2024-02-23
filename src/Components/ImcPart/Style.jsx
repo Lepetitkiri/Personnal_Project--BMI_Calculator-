@@ -55,7 +55,7 @@ const ImcPartStyle = styled.div`
     &--Circle {
       width: 200px;
       height: 100px;
-      background: conic-gradient(from 180deg at 50% 100%, #7FFF00, #228B22, #FFFF00, #FF0000, #FF0000);
+      background: conic-gradient(from 180deg at 50% 100%, #FF0000, #FF0000, #EEFF33, #45FF33, #EEFF33, #FF0000, #FF0000, #900C3F, #900C3F);
         border-top-left-radius: 100px;
         border-top-right-radius: 100px;
         border: 2px solid ${colors.secondary};
