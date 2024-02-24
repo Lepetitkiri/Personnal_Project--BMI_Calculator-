@@ -77,7 +77,6 @@ const ImcPartStyle = styled.div`
       font-size: small;
     }
   }
-}
 
 /* Version tablette */
 @media only screen and (max-width: 992px) {
@@ -85,6 +84,7 @@ const ImcPartStyle = styled.div`
   margin-top: 30px;
   margin-bottom: 30px;
 }
+
 /* Version mobile */
 @media only screen and (max-width: 767px) {
   width: 95%;
